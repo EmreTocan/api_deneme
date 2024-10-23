@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request # type: ignore
 
 app = Flask(__name__)
 
@@ -15,7 +15,7 @@ def toplama():
         return "Hata: Lütfen geçerli sayılar girin. Örnek: 2,2"
 
 # Çıkarma endpoint
-@app.route('/çıkarma')
+@app.route('/çıkarma') 
 def cikarma():
     try:
         parametreler = request.query_string.decode('utf-8').split(',')
@@ -49,5 +49,8 @@ def carpma():
     except:
         return "Hata: Lütfen geçerli sayılar girin. Örnek: 2,3"
 
+# if __name__ == '__main__':
+ #  app.run(debug=True, port=8080)
+
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run(debug=True, host='0.0.0.0', port=8080)
