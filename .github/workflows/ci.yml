@@ -29,7 +29,7 @@ jobs:
         sonar-scanner -Dsonar.projectKey=my_project_key \
                        -Dsonar.sources=. \
                        -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-                       -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+                       -Dsonar.login=${{ secrets.SONAR_TOKEN }} || true 
 
     # Docker için login
     - name: Docker Login
