@@ -40,4 +40,4 @@ jobs:
       run: |
         IMAGE_TAG="${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }}"
         docker build -t $IMAGE_TAG .
-        docker push $IMAGE_TAG 
+        docker push $IMAGE_TAG
