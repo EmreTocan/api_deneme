@@ -1,20 +1,20 @@
-# Base image olarak Python 3.9 kullanıyoruz
+# imaj olarak python arddınadan versiyonu ve gereksiz dosya ve kütüphanelerin olmadığı için daha az yer kaplayıp daha hızlı oolması için
 FROM python:3.9-slim
 
-# Çalışma dizini oluştur
+# çalışma dizinidir çalışacağı dizini seçiyoruz
 WORKDIR /app
 
-# Gereken dosyaları ekliyoruz
+# gereksinimleri imajın dizinine kopyalar 
 COPY requirements.txt .
 
-# Gerekli bağımlılıkları kur
+# gerekli python paketlerini kurması arından inen paketleri önbelleğe alınamsını engeller -r tüm paketleri tek komutla inmesini saplar dosyamızın içinde de ihtiyacımız olan paketler vardır 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Uygulama dosyalarını kopyala
+# bütün uygulama dosyalarını kopyalama 
 COPY . .
 
-# Port 8080'i aç
+# uygulama hani porttan dışa açılacağını ayarlıyoruz
 EXPOSE 8080
 
-# Uygulamayı başlat
+# python ile hangi dosyamızı çalışacağını belirtiyoruz.
 CMD ["python", "app.py"]
