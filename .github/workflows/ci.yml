@@ -15,12 +15,23 @@ jobs: # işlemlerimizin başladığı kısım yapıalcak işleri tanımlarız
       uses: actions/checkout@v2
 
     # eğer sistemde sonarlint yok ise yüklenmesini sağlıyoruz birden fazla işlem oldupu için pipe kullanıyoruz indirip, açıp istediğimiz yere çıkartıyoruz.
+   # - name: Install Sonar Scanner
+    #  run: |
+    #    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
+    #    unzip sonar-scanner-cli-4.8.0.2856-linux.zip
+    #    sudo mv sonar-scanner-4.8.0.2856-linux /opt/sonar-scanner
+    #    echo "export PATH=\$PATH:/opt/sonar-scanner/bin" >> $GITHUB_ENV
+
     - name: Install Sonar Scanner
       run: |
-        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
-        unzip sonar-scanner-cli-4.8.0.2856-linux.zip
-        sudo mv sonar-scanner-4.8.0.2856-linux /opt/sonar-scanner
-        echo "export PATH=\$PATH:/opt/sonar-scanner/bin" >> $GITHUB_ENV
+          # Sonar Scanner'ı indir
+          curl -L -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/4.8.0.2856/sonar-scanner-cli-4.8.0.2856-linux.zip
+          # Zip dosyasını çıkar
+          unzip sonar-scanner-cli-4.8.0.2856-linux.zip
+          # İndirilen dizini /opt/sonar-scanner dizinine taşı
+          sudo mv sonar-scanner-4.8.0.2856-linux /opt/sonar-scanner
+          # PATH'e ekle
+          echo "/opt/sonar-scanner/bin" >> $GITHUB_PATH
 
     # sonarlint kalite, düzen ve güvenlik taraması yapmak için adımımıza ekliyoruz 
     # sonar-scanner: bu komutla kodun analiz edilmesi için parametreler alır 
