@@ -22,14 +22,17 @@ jobs: # işlemlerimizin başladığı kısım yapıalcak işleri tanımlarız
     #    sudo mv sonar-scanner-4.8.0.2856-linux /opt/sonar-scanner
     #    echo "export PATH=\$PATH:/opt/sonar-scanner/bin" >> $GITHUB_ENV
 
+    - name: Install Dependencies
+      run: sudo apt-get install -y unzip
+
     - name: Install Sonar Scanner
       run: |
           # Sonar Scanner'ı indir
           curl -L -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/4.8.0.2856/sonar-scanner-cli-4.8.0.2856-linux.zip
-          
-          # Dosyanın başarıyla indirilip indirilmediğini kontrol et
-          if [ $? -ne 0 ]; then
-              echo "Dosya indirilemedi. Lütfen URL'yi kontrol edin."
+
+          # İndirilen dosyanın geçerli olup olmadığını kontrol et
+          if [ ! -f sonar-scanner-cli-4.8.0.2856-linux.zip ]; then
+              echo "Dosya indirilemedi."
               exit 1
           fi
 
@@ -41,7 +44,6 @@ jobs: # işlemlerimizin başladığı kısım yapıalcak işleri tanımlarız
           
           # PATH'e ekle
           echo "/opt/sonar-scanner/bin" >> $GITHUB_PATH
-
 
     # sonarlint kalite, düzen ve güvenlik taraması yapmak için adımımıza ekliyoruz 
     # sonar-scanner: bu komutla kodun analiz edilmesi için parametreler alır 
