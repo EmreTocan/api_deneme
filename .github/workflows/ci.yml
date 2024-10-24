@@ -17,8 +17,10 @@ jobs: # işlemlerimizin başladığı kısım yapıalcak işleri tanımlarız
     # eğer sistemde sonarlint yok ise yüklenmesini sağlıyoruz birden fazla işlem oldupu için pipe kullanıyoruz indirip, açıp istediğimiz yere çıkartıyoruz.
     - name: Install Sonar Scanner
       run: |
-          sudo apt-get update
-          sudo apt-get install -y sonar-scanner
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/4.7.0.2747/sonar-scanner-cli-4.7.0.2747-linux.zip
+          unzip sonar-scanner-cli-4.7.0.2747-linux.zip
+          sudo mv sonar-scanner-4.7.0.2747-linux /opt/sonar-scanner
+          echo "export PATH=\$PATH:/opt/sonar-scanner/bin" >> $GITHUB_ENV
 
     # sonarlint kalite, düzen ve güvenlik taraması yapmak için adımımıza ekliyoruz 
     # sonar-scanner: bu komutla kodun analiz edilmesi için parametreler alır 
