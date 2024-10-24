@@ -35,7 +35,7 @@ jobs: # işlemlerimizin başladığı kısım yapıalcak işleri tanımlarız
         sonar-scanner -Dsonar.projectKey=my_project_key \
                        -Dsonar.sources=. \
                        -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-                       -Dsonar.login=${{ secrets.SONAR_TOKEN }} 
+                       -Dsonar.login=${{ secrets.SONAR_TOKEN }}
     # burada hataya rağmen devam etmesi içi || true veya continue-on-error: true kullandım ikiside işe yaradı . 
     # spesifik bir bölgedeyse hata //NOSONAR yazılacak 
     # Docker için login
