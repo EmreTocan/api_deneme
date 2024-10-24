@@ -16,7 +16,7 @@ jobs: # işlemlerimizin başladığı kısım yapıalcak işleri tanımlarız
 
     # eğer sistemde sonarlint yok ise yüklenmesini sağlıyoruz birden fazla işlem oldupu için pipe kullanıyoruz indirip, açıp istediğimiz yere çıkartıyoruz.
     - name: Install Sonar Scanner
-        run: |
+      run: |
           sudo apt-get update
           sudo apt-get install -y sonar-scanner
 
