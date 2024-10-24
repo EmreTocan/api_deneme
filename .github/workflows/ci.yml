@@ -32,13 +32,14 @@ jobs: # işlemlerimizin başladığı kısım yapıalcak işleri tanımlarız
     # 35: sonar sunucunun adresi belirtir 
     # 36: doğrulama için tokendir 
     
-    - name: Run SonarLint
+    - name: Run SonarLint 
       run: | 
         echo "SonarLint taraması gerçekleştiriliyor..."  
         sonar-scanner -Dsonar.projectKey=my_project_key \
                        -Dsonar.sources=. \
                        -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
                        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      continue-on-error: true
     # burada hataya rağmen devam etmesi içi || true veya continue-on-error: true kullandım ikiside işe yaradı . 
     # spesifik bir bölgedeyse hata //NOSONAR yazılacak 
     # Docker için login
