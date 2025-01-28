@@ -49,8 +49,5 @@ def carpma():
     except:
         return "Hata: Lütfen geçerli sayılar girin. Örnek: 2,3"
 
-# if __name__ == '__main__':
- #  app.run(debug=True, port=8080)
-
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)
