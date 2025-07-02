@@ -1,1 +1,19 @@
+Basit Matematik API'si
+Bu proje, Flask ile geliştirilmiş basit bir matematik işlemleri API'sidir.
+Docker ile container içinde çalışacak şekilde yapılandırılmıştır.
 
+Özellikler
+Toplama, çıkarma, çarpma ve bölme işlemleri için HTTP GET endpoint'leri.
+
+İşlemler parametre olarak virgülle ayrılmış iki sayı alır (örnek: /toplama?2,3).
+
+Bölme işleminde 0'a bölme kontrolü mevcuttur.
+
+Hatalı veya eksik parametre girişlerinde kullanıcı dostu hata mesajları döner.
+
+Teknolojiler
+Python 3.9 (slim)
+
+Flask 2.0.2
+
+Docker ile containerize ettim.
